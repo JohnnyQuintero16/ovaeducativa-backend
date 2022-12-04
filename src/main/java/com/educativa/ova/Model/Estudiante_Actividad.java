@@ -17,14 +17,14 @@ import lombok.NoArgsConstructor;
 @Data
 public class Estudiante_Actividad {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @Column(name = "id_estudiante")
     private String idEstudiante;
     @Column(name = "id_actividad")
-    private String idActividad;
+    private int idActividad;
     @Column(name = "calificacion")
     private float calificacion;
-    @Column(name = "estado_Actividad")
+    @Column(name = "estado_actividad")
     private int estadoActividad;
 }

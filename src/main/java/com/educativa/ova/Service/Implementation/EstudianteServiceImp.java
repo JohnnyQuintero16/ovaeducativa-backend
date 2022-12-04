@@ -26,8 +26,13 @@ public class EstudianteServiceImp implements EstudianteService {
     private final EstudianteDAO estudianteDAO;
 
     @Override
-    public Estudiante createEstudiante(Estudiante estudiante) throws Exception {
-        estudiante.setClave(encriptar(estudiante.getClave(),"9sa87yh#f!gqunfp98hy!!awo098#*ahis"));
+    public Estudiante createEstudiante(Estudiante estudiante) {
+        try{
+            estudiante.setClave(encriptar(estudiante.getClave(),"9sa87yh#f!gqunfp98hy!!awo098#*ahis"));
+        }catch (Exception e){
+            System.err.println(e.getMessage());
+            return null;
+        }
         return estudianteDAO.save(estudiante);
     }
 
