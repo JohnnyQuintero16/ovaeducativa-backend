@@ -12,6 +12,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -80,6 +82,12 @@ public class CargarActividadUseCase {
             if(!actividadResponseList.isEmpty())
                 actResponses.add(estudiante_actResponse);
         }
+        Collections.sort(actResponses, new Comparator<Estudiante_ActResponse>() {
+            @Override
+            public int compare(Estudiante_ActResponse o1, Estudiante_ActResponse o2) {
+                return (o1.getCodigo().compareTo(o2.getCodigo()));
+            }
+        });
         return actResponses;
     }
 }

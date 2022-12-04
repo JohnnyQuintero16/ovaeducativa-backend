@@ -15,4 +15,6 @@ public class Estudiante_ActResponse {
     private String apellidoEstudiante;
     private String email;
     private List<ActividadResponse> actividadResponseList;
+
+
 }
