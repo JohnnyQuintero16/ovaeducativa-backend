@@ -66,7 +66,7 @@ public class CargarActividadUseCase {
                         cntActivity--;
                     }
                 }else{
-                    if(estudiante.getCodigo().equals(codigo)){
+                    if(estudiante.getCodigo().equals(codigo) && estudiante_actividad.getIdEstudiante().equals(codigo)){
                         actividadResponse.setEstadoActividad(estudiante_actividad.getEstadoActividad());
                         actividadResponse.setCalificacion(estudiante_actividad.getCalificacion());
                         actividadResponse.setNombreActividad(mapActividad.get(estudiante_actividad.getIdActividad()));

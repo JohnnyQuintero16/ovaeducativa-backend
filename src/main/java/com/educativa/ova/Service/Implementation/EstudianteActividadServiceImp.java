@@ -1,6 +1,7 @@
 package com.educativa.ova.Service.Implementation;
 
 import com.educativa.ova.DAO.Estudiante_ActividadDAO;
+import com.educativa.ova.DTO.UpdateActivityRequest;
 import com.educativa.ova.Model.Estudiante;
 import com.educativa.ova.Model.Estudiante_Actividad;
 import com.educativa.ova.Service.EstudianteActividadService;
@@ -31,6 +32,21 @@ public class EstudianteActividadServiceImp implements EstudianteActividadService
         return this.estudiante_actividadDAO.findAllByIdEstudiante(codigo);
     }
 
+    @Override
+    public Estudiante_Actividad updateActivity(UpdateActivityRequest updateActivityRequest) {
+        try{
+            Estudiante_Actividad estudiante_actividad = estudiante_actividadDAO.findAllByIdEstudiante(updateActivityRequest.getCodigo())
+                    .stream()
+                    .filter(est -> est.getIdActividad() == updateActivityRequest.getIdActividad()).findFirst().get();
+            estudiante_actividad.setCalificacion(updateActivityRequest.getCalificacion());
+            estudiante_actividad.setEstadoActividad(1);
+            return estudiante_actividadDAO.save(estudiante_actividad);
+        }catch (Exception e){
+            System.err.println(e.getMessage());
+            return null;
+        }
+    }
+    @Override
     public List<Estudiante_Actividad> getActividades(){
         return this.estudiante_actividadDAO.findAll();
     }
